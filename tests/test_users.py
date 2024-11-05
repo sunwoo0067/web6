@@ -5,6 +5,7 @@ client = TestClient(app)
 
 def test_create_user():
     response = client.post(
+<<<<<<< HEAD
         "/api/v1/users/",
         json={
             "email": "test@example.com",
@@ -81,3 +82,21 @@ def test_read_user_not_found():
     response = client.get("/api/v1/users/999")
     assert response.status_code == 404
     assert response.json()["detail"] == "User not found"
+=======
+        '/api/v1/users/',
+        json={
+            'email': 'test@example.com',
+            'username': 'testuser',
+            'password': 'testpass123'
+        }
+    )
+    assert response.status_code == 200
+    data = response.json()
+    assert data['email'] == 'test@example.com'
+    assert data['username'] == 'testuser'
+
+def test_read_users():
+    response = client.get('/api/v1/users/')
+    assert response.status_code == 200
+    assert isinstance(response.json(), list)
+>>>>>>> be5220edfd9c10ca47d60657c71d9ee5d1c8aeee
