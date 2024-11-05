@@ -16,6 +16,9 @@ class Settings(BaseSettings):
     
     # Database settings
     DATABASE_URL: MySQLDsn
+    SECRET_KEY: str
+    ALGORITHM: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
 
     class Config:
         case_sensitive = True
