@@ -1,11 +1,11 @@
-from fastapi import FastAPI
-from app.core.config import settings
+from pydantic import BaseSettings
 
-app = FastAPI(
-    title=settings.PROJECT_NAME,
-    version=settings.VERSION
-)
+class Settings(BaseSettings):
+    API_V1_STR: str = "/api/v1"
+    PROJECT_NAME: str = "FastAPI Example"
+    VERSION: str = "1.0.0"
+    
+    class Config:
+        case_sensitive = True
 
-@app.get("/")
-async def root():
-    return {"message": "Hello World"} 
+settings = Settings() 
